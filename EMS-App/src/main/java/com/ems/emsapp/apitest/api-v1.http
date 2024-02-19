@@ -1,5 +1,14 @@
 ###
-http://localhost:8080/api/employees
+POST http://localhost:8080/api/employees
 
 ###
-http://localhost:8080/api/employees/1
+GET http://localhost:8080/api/employees/1
+
+###
+GET http://localhost:8080/api/employees/search
+
+###
+PUT http://localhost:8080/api/employees
+
+###
+DELETE http://localhost:8080/api/employees/2
