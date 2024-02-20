@@ -8,15 +8,25 @@ const ListEmployeeComponent = () => {
     const navigator = useNavigate();
 
     useEffect(() => {
-        listEmployees().then((response) => {
+        listEmployees()
+            .then((response) => {
             setEmployees(response.data);
-        }). catch(error => {
+        })
+            .catch(error => {
             console.error(error);
         })
     }, [])
 
     function addNewEmployees() {
         navigator('/add-employee')
+    }
+
+    function updateEmployee(id) {
+        navigator(`/edit-employee/${id}`);
+    }
+
+    function deleteEmployee(id) {
+
     }
 
     return (
@@ -32,21 +42,25 @@ const ListEmployeeComponent = () => {
                     <th>Employee FirstName</th>
                     <th>Employee LastName</th>
                     <th>Employee Email</th>
+                    <th>Actions</th>
                 </tr>
                 </thead>
 
                 <tbody>
 
                 {
-                    employees.map(employee =>
+                    employees.map(employee => (
                     <tr key={employee.id}>
                         <td>{employee.id}</td>
                         <td>{employee.firstName}</td>
                         <td>{employee.lastName}</td>
                         <td>{employee.email}</td>
+                        <td>
+                            <button className='btn btn-outline-dark' onClick={() => updateEmployee(employee.id)} type="button">Update</button> &nbsp;&nbsp;&nbsp;
+                            <button className='btn btn-outline-success' onClick={() => deleteEmployee(employee.id)} type="button">Delete</button>
+                        </td>
                     </tr>
-                    )
-                }
+                    ))}
 
                 </tbody>
             </table>

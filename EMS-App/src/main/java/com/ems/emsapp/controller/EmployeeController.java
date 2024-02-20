@@ -28,7 +28,7 @@ public class EmployeeController {
     }
 
     @GetMapping()
-    public ResponseEntity<EmployeeDto> getEmployeeById(@RequestParam(required = false) Long employeeId) {
+    public ResponseEntity<EmployeeDto> getEmployeeById(@RequestParam(required = false, defaultValue = "0")  Long employeeId) {
         EmployeeDto employeeDto = employeeService.getEmployeeById(employeeId);
         return new ResponseEntity<>(employeeDto, HttpStatus.OK);
     }
