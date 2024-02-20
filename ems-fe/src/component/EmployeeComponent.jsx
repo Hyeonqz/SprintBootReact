@@ -1,5 +1,5 @@
-import React, {useState} from 'react';
-import {createEmployee} from "../services/EmployeeService.jsx";
+import React, {useEffect, useState} from 'react';
+import {createEmployee, getEmployee} from "../services/EmployeeService.jsx";
 import { useNavigate, useParams } from "react-router-dom";
 
 const EmployeeComponent = () => {
@@ -16,6 +16,19 @@ const EmployeeComponent = () => {
         email: ''
     })
     const navigate = useNavigate();
+
+    useEffect(() => {
+        if(id) {
+            getEmployee(id)
+                .then((response) => {
+                setFirstName(response.data.firstName)
+                setLastName(response.data.lastName)
+                setEmail(response.data.email)
+            }).catch(error => {
+                console.error(error);
+            })
+        }
+    }, [id])
 
     const handlerFirstName = (e) => {
         setFirstName(e.target.value)

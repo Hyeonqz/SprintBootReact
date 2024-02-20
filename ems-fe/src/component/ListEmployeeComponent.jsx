@@ -25,9 +25,6 @@ const ListEmployeeComponent = () => {
         navigator(`/edit-employee/${id}`);
     }
 
-    function deleteEmployee(id) {
-
-    }
 
     return (
         <div className="container">
@@ -57,7 +54,6 @@ const ListEmployeeComponent = () => {
                         <td>{employee.email}</td>
                         <td>
                             <button className='btn btn-outline-dark' onClick={() => updateEmployee(employee.id)} type="button">Update</button> &nbsp;&nbsp;&nbsp;
-                            <button className='btn btn-outline-success' onClick={() => deleteEmployee(employee.id)} type="button">Delete</button>
                         </td>
                     </tr>
                     ))}

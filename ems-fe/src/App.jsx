@@ -21,6 +21,7 @@ function App() {
                 <Route path='/add-employee' element= { <EmployeeComponent /> }></Route>
                 {/* localhost:3000/edit-employee/{id} -> update */}
                 <Route path='/edit-employee/:id' element={ <EmployeeComponent /> }></Route>
+
                 {/* localhost:3000/edit-employee/{id} -> delete */}
 {/*
                 <Route path='/delete-employee/:id' element={ <EmployeeComponent /> }></Route>
