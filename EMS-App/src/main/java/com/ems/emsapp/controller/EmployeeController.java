@@ -27,14 +27,13 @@ public class EmployeeController {
         return new ResponseEntity<>(saveEmployee, HttpStatus.CREATED);
     }
 
-    @GetMapping()
-    public ResponseEntity<EmployeeDto> getEmployeeById(@RequestParam(required = false, defaultValue = "0")  Long employeeId) {
-        EmployeeDto employeeDto = employeeService.getEmployeeById(employeeId);
+    @GetMapping("/{id}")
+    public ResponseEntity<EmployeeDto> getEmployeeById(@PathVariable(required = false) Long id) {
+        EmployeeDto employeeDto = employeeService.getEmployeeById(id);
         return new ResponseEntity<>(employeeDto, HttpStatus.OK);
     }
 
-    //Build Get All Employees
-    @GetMapping("/search")
+    @GetMapping()
     public ResponseEntity<List<EmployeeDto>> getAllEmployees() {
         List<EmployeeDto> employees = employeeService.getAllEmployees();
         return ResponseEntity.ok(employees);
